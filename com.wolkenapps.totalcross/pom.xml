@@ -40,7 +40,7 @@
 				<artifactId>totalcross</artifactId>
 				<version>1.65</version>
 				<scope>system</scope>
-				<systemPath>c:\\TotalCrossSDK\\dist\tc.jar</systemPath>
+				<systemPath>${tc.sdk.home}/dist/tc.jar</systemPath>
 			</dependency>
 		</dependencies>
 	</dependencyManagement>
