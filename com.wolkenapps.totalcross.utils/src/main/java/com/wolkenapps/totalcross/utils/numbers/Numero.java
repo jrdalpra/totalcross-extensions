@@ -15,8 +15,13 @@ public class Numero {
       }
 
       public static BigDecimal novo(double value) {
+         return novo(value, 3);
+      }
+
+      public static BigDecimal novo(double value, int scale) {
          try {
-            return new BigDecimal(value);
+            BigDecimal big = BigDecimal.valueOf(value);
+            return big.setScale(scale);
          } catch (InvalidNumberException erro) {
             throw new RuntimeException(erro);
          }
