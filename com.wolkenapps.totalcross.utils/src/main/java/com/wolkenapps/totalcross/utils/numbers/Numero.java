@@ -14,14 +14,18 @@ public class Numero {
          return numero.compareTo(BigDecimal.ZERO) > 0;
       }
 
-      public static BigDecimal novo(double value) {
-         return novo(value, 3);
+      public static BigDecimal novo(double valor) {
+         return novo(valor, BigDecimal.ROUND_HALF_DOWN);
       }
 
-      public static BigDecimal novo(double value, int scale) {
+      public static BigDecimal novo(double valor, int arredondamento) {
+         return novo(valor, 3, arredondamento);
+      }
+
+      public static BigDecimal novo(double valor, int casasDecimais, int arredondamento) {
          try {
-            BigDecimal big = BigDecimal.valueOf(value);
-            return big.setScale(scale);
+            BigDecimal big = BigDecimal.valueOf(valor);
+            return big.setScale(casasDecimais, arredondamento);
          } catch (InvalidNumberException erro) {
             throw new RuntimeException(erro);
          }
