@@ -10,8 +10,36 @@ public class Numero {
 
    public static final class BigDecimal_ {
 
+      public static boolean ehIgual(BigDecimal um, BigDecimal outro) {
+         return um.compareTo(outro) == 0;
+      }
+
+      public static boolean ehMaior(BigDecimal um, BigDecimal outro) {
+         return um.compareTo(outro) > 0;
+      }
+
+      public static boolean ehMaiorOuIgual(BigDecimal um, BigDecimal outro) {
+         return ehIgual(um, outro) || ehMaior(um, outro);
+      }
+
+      public static boolean ehMenor(BigDecimal um, BigDecimal outro) {
+         return um.compareTo(outro) < 0;
+      }
+
+      public static boolean ehMenorOuIgual(BigDecimal um, BigDecimal outro) {
+         return ehIgual(um, outro) || ehMenor(um, outro);
+      }
+
+      public static boolean ehMenorOuIgualAZero(BigDecimal um) {
+         return ehMenorOuIgual(um, BigDecimal.ZERO);
+      }
+
       public static boolean ehMaiorQueZero(BigDecimal numero) {
-         return numero.compareTo(BigDecimal.ZERO) > 0;
+         return ehMaior(numero, BigDecimal.ZERO);
+      }
+
+      public static boolean ehMaiorOuIgualAZero(BigDecimal numero) {
+         return ehMaiorOuIgual(numero, BigDecimal.ZERO);
       }
 
       public static BigDecimal novo(double valor) {
@@ -30,6 +58,15 @@ public class Numero {
             throw new RuntimeException(erro);
          }
       }
+
+      public static BigDecimal valueOf(String numero) {
+         try {
+            return numero.isEmpty() ? BigDecimal.valueOf(0) : new BigDecimal(numero);
+         } catch (InvalidNumberException e) {
+            throw new RuntimeException("Erro ao converter " + numero + " para BigDecimal");
+         }
+      }
+
    }
 
 }
