@@ -4,7 +4,7 @@ import totalcross.util.Hashtable;
 import totalcross.util.Vector;
 
 import com.wolkenapps.vernum.exceptions.ApplicationNotStarted;
-import com.wolkenapps.vernum.exceptions.NoneBeanDefinitionFound;
+import com.wolkenapps.vernum.exceptions.NoBeanDefinitionFound;
 import com.wolkenapps.vernum.factory.Creator;
 import com.wolkenapps.vernum.factory.DefaultCreator;
 import com.wolkenapps.vernum.factory.config.ApplicationContextAwareProcessor;
@@ -52,11 +52,9 @@ public class DefaultApplicationContext implements ApplicationContext {
 
    public void append(BeansDefinitions beans) {
       BeanDefinition[] all = beans.get(this);
-      if (all != null && all.length > 0) {
-         for (int i = 0, size = all.length; i < size; i++) {
+      if (all != null && all.length > 0)
+         for (int i = 0, size = all.length; i < size; i++)
             register(all[i]);
-         }
-      }
    }
 
    public void append(BeansDefinitions[] arrayOfBeansDefinitions) {
@@ -66,18 +64,13 @@ public class DefaultApplicationContext implements ApplicationContext {
    }
 
    public Object getBean(String name) {
-      if (!started) {
+      if (!started)
          throw new ApplicationNotStarted();
-      }
-      if (!definitions.exists(name)) {
-         throw new NoneBeanDefinitionFound(name);
-      }
+      if (!definitions.exists(name))
+         throw new NoBeanDefinitionFound(name);
       BeanDefinition definition = (BeanDefinition) definitions.get(name);
-
-      if (definition.isSingleton()) {
+      if (definition.isSingleton())
          return getSingletonOf(definition);
-      }
-
       return createUsing(definition);
 
    }
@@ -89,9 +82,8 @@ public class DefaultApplicationContext implements ApplicationContext {
    }
 
    private Object getSingletonOf(BeanDefinition definition) {
-      if (singletons.exists(definition.name)) {
+      if (singletons.exists(definition.name))
          return singletons.get(definition.name);
-      }
       Object bean = createUsing(definition);
       singletons.put(definition.name, bean);
       return bean;
@@ -115,7 +107,7 @@ public class DefaultApplicationContext implements ApplicationContext {
       return new DefaultCreator();
    }
 
-   public Vector getBeansOfType(Class type) throws ApplicationNotStarted, NoneBeanDefinitionFound {
+   public Vector getBeansOfType(Class type) throws ApplicationNotStarted, NoBeanDefinitionFound {
       Vector all = definitions.getValues();
       Vector beansOfType = new Vector(all.size());
       for (int i = 0, size = all.size(); i < size; i++)

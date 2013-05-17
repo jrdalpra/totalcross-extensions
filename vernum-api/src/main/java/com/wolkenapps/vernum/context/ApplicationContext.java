@@ -3,7 +3,7 @@ package com.wolkenapps.vernum.context;
 import totalcross.util.Vector;
 
 import com.wolkenapps.vernum.exceptions.ApplicationNotStarted;
-import com.wolkenapps.vernum.exceptions.NoneBeanDefinitionFound;
+import com.wolkenapps.vernum.exceptions.NoBeanDefinitionFound;
 import com.wolkenapps.vernum.factory.config.BeanDefinition;
 import com.wolkenapps.vernum.factory.config.BeansDefinitions;
 import com.wolkenapps.vernum.factory.config.BeanPostProcessor;
@@ -64,7 +64,7 @@ public interface ApplicationContext {
      * @param name bean name
      * @return instance based on {@link BeanDefinition}
      */
-    Object getBean(String name) throws ApplicationNotStarted, NoneBeanDefinitionFound;
+    Object getBean(String name) throws ApplicationNotStarted, NoBeanDefinitionFound;
 
     /**
      * Returns all beans of type
@@ -72,7 +72,7 @@ public interface ApplicationContext {
      * @param type desired type
      * @return beans of desired type
      */
-    Vector getBeansOfType(Class type) throws ApplicationNotStarted, NoneBeanDefinitionFound;
+    Vector getBeansOfType(Class type) throws ApplicationNotStarted, NoBeanDefinitionFound;
 
     /**
      * Register a bean post processor at end of processor lists
