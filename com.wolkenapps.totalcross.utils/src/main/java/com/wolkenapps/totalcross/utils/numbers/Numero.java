@@ -10,6 +10,10 @@ public class Numero {
 
    public static final class BigDecimal_ {
 
+      public static boolean naoSaoIguais(BigDecimal um, BigDecimal outro) {
+         return !ehIgual(um, outro);
+      }
+
       public static boolean ehIgual(BigDecimal um, BigDecimal outro) {
          return um.compareTo(outro) == 0;
       }
