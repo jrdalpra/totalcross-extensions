@@ -10,40 +10,40 @@ public class Numero {
 
    public static final class BigDecimal_ {
 
-      public static boolean naoSaoIguais(BigDecimal um, BigDecimal outro) {
-         return !ehIgual(um, outro);
+      public static boolean naoEhIgual(BigDecimal este, BigDecimal outro) {
+         return !ehIgual(este, outro);
       }
 
-      public static boolean ehIgual(BigDecimal um, BigDecimal outro) {
-         return um.compareTo(outro) == 0;
+      public static boolean ehIgual(BigDecimal este, BigDecimal outro) {
+         return este.compareTo(outro) == 0;
       }
 
-      public static boolean ehMaior(BigDecimal um, BigDecimal outro) {
-         return um.compareTo(outro) > 0;
+      public static boolean ehMaior(BigDecimal este, BigDecimal outro) {
+         return este.compareTo(outro) > 0;
       }
 
-      public static boolean ehMaiorOuIgual(BigDecimal um, BigDecimal outro) {
-         return ehIgual(um, outro) || ehMaior(um, outro);
+      public static boolean ehMaiorOuIgual(BigDecimal este, BigDecimal outro) {
+         return ehIgual(este, outro) || ehMaior(este, outro);
       }
 
-      public static boolean ehMenor(BigDecimal um, BigDecimal outro) {
-         return um.compareTo(outro) < 0;
+      public static boolean ehMenor(BigDecimal este, BigDecimal outro) {
+         return este.compareTo(outro) < 0;
       }
 
-      public static boolean ehMenorOuIgual(BigDecimal um, BigDecimal outro) {
-         return ehIgual(um, outro) || ehMenor(um, outro);
+      public static boolean ehMenorOuIgual(BigDecimal este, BigDecimal outro) {
+         return ehIgual(este, outro) || ehMenor(este, outro);
       }
 
-      public static boolean ehMenorOuIgualAZero(BigDecimal um) {
-         return ehMenorOuIgual(um, BigDecimal.ZERO);
+      public static boolean ehMenorOuIgualAZero(BigDecimal este) {
+         return ehMenorOuIgual(este, BigDecimal.ZERO);
       }
 
-      public static boolean ehMaiorQueZero(BigDecimal numero) {
-         return ehMaior(numero, BigDecimal.ZERO);
+      public static boolean ehMaiorQueZero(BigDecimal este) {
+         return ehMaior(este, BigDecimal.ZERO);
       }
 
-      public static boolean ehMaiorOuIgualAZero(BigDecimal numero) {
-         return ehMaiorOuIgual(numero, BigDecimal.ZERO);
+      public static boolean ehMaiorOuIgualAZero(BigDecimal este) {
+         return ehMaiorOuIgual(este, BigDecimal.ZERO);
       }
 
       public static BigDecimal novo(double valor) {
@@ -63,12 +63,20 @@ public class Numero {
          }
       }
 
-      public static BigDecimal valueOf(String numero) {
+      public static BigDecimal valueOf(String este) {
          try {
-            return numero.isEmpty() ? BigDecimal.valueOf(0) : new BigDecimal(numero);
+            return este.isEmpty() ? BigDecimal.valueOf(0) : new BigDecimal(este);
          } catch (InvalidNumberException e) {
-            throw new RuntimeException("Erro ao converter " + numero + " para BigDecimal");
+            throw new RuntimeException("Erro ao converter " + este + " para BigDecimal");
          }
+      }
+
+      public static boolean ehNuloOuZero(BigDecimal este) {
+         return este == null || ehIgual(este, BigDecimal.ZERO);
+      }
+
+      public static boolean ehMenorQueZero(BigDecimal este) {
+         return ehMenor(este, BigDecimal.ZERO);
       }
 
    }
