@@ -79,5 +79,13 @@ public class Numero {
          return ehMenor(este, BigDecimal.ZERO);
       }
 
+      public static double double_(BigDecimal este) {
+         try {
+            return este.doubleValue();
+         } catch (InvalidNumberException e) {
+            throw new RuntimeException(e.getMessage());
+         }
+      }
+
    }
 }
