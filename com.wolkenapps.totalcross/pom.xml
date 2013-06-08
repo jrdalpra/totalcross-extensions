@@ -36,11 +36,9 @@
 		<dependencies>
 			<!-- make a maven managed dependency -->
 			<dependency>
-				<groupId>br.com.superwaba</groupId>
+				<groupId>com.superwaba</groupId>
 				<artifactId>totalcross</artifactId>
-				<version>2.0a3</version>
-				<scope>system</scope>
-				<systemPath>c:/TotalCrossSDK/dist/tcweb.jar</systemPath>
+				<version>2.0.0-b1</version>
 			</dependency>
 			<dependency>
 				<groupId>br.com.superwaba</groupId>
@@ -54,7 +52,7 @@
 
 	<dependencies>
 		<dependency>
-			<groupId>br.com.superwaba</groupId>
+			<groupId>com.superwaba</groupId>
 			<artifactId>totalcross</artifactId>
 		</dependency>
 	</dependencies>
