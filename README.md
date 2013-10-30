@@ -24,3 +24,7 @@ To use this repo with maven just put this configuration in you "${user.home}/.m2
 
 More is comming
 
+
+
+[![Bitdeli Badge](https://d2weczhvl823v0.cloudfront.net/jrdalpra/totalcross-extensions/trend.png)](https://bitdeli.com/free "Bitdeli Badge")
+
